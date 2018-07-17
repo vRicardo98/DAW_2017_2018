@@ -1,0 +1,56 @@
+body {
+	width:100%;
+	font-size:1em;
+}
+
+form label {
+	font-weight:bold;
+}
+
+/*Navbar Customization */
+.navbar-light .nav-link.active {
+	background-color:#e7e7e7;
+}
+
+/*Carousel Customization */
+.carousel-inner{
+	width: auto;
+	height: 30%;
+}
+
+#myCarousel {
+	margin: 30px 50px;
+}
+
+
+/*Card Customization */
+.jumbotron {
+	padding:30px;
+	background-color:#FFF;
+	margin: 30px 50px;
+	width:auto;
+}
+
+.card {
+	border-color: #4792d1;
+}
+
+.card-header {
+	font-size:1em;
+	background-color:#4792d1;
+}
+
+.card-body {
+	background-color:#FFF;
+	color:#000;
+}
+
+.card .card-text {
+	font-size:0.8em;
+	margin:0.2px;
+}
+
+/*Img Customization */
+.logo {
+	height:150px;
+}
