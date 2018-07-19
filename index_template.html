@@ -1,0 +1,43 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Home | DAW (LAB 2)</title>
+		
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+	</head>
+	
+	<body>
+		<div class="header">
+			<img class="logo" src="./img/logo.jpg" title="logo" />
+			<!-- BEGIN MENU -->
+			<div class="menu">
+				<a href="./index_template.html">{MENU_1}</a>
+				
+				<span style="float:right; display:block; color:white; margin:10px;">{WELCOME}</span>
+				<a href="./register_template.html">{MENU_2}</a>
+				<a href="./login_template.html">{MENU_3}</a>
+				
+			</div>
+			<!-- END MENU -->
+		</div>
+		
+		<div class="main">
+			<!-- BEGIN MICROPOSTS -->
+			<div class="shadow">
+				<div class="post-title">
+					<div class="post-title-created">{USER} updated: {UPDATED} created: {CREATED}</div>
+					<div class="post-title-updated">{UPDATE}</div>
+				</div>
+				<div class="post-text">{MICROPOST}</div>
+			</div>
+			<!-- END MICROPOSTS -->
+		</div>
+		
+		<footer>
+			<div class="col2">© Desenvolvimento de Aplicações Web 2018</div>
+			<div class="col2 text-right">Designed by <a href="http://fabiofelicidade.com">Fábio Felicidade</a></div>
+		</footer>
+	</body>
+
+</html>
