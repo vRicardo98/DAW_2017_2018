@@ -1,1 +1,139 @@
+body {
+	width:96%;
+	margin:0;
+	padding:0;
+	font-size:0.8em;
+	font-family:Verdana;
+	
+	margin:2%;
+}
+
+h1 {
+	font-weight:normal;
+}
+
+footer {
+	padding:20px;
+	margin-left:-20px;
+}
+
+form {
+	margin:20px;
+}
+
+form .row * {
+	display:block;
+	width:100%;
+}
+
+form label {
+	margin:15px 0 3px 0;
+}
+
+form input[type="text"],
+form input[type="password"] {
+	border:0;
+	border-bottom:1px solid #000;
+	height:35px;
+}
+
+.form-message {
+	background-color:red;
+	color:white;
+	padding:5px;
+}
+
+.col2 {
+	width:50%;
+	float:left;
+}
+
+.text-center {
+	text-align:center;
+}
+
+.text-right {
+	text-align:right;
+}
+
+.header,
+.main,
+footer {
+	width:100%;
+}
+
+.header .logo {
+	height:150px;
+	width:auto;
+}
+
+.header .menu {
+	width:100%;
+	background-color:#2196F3;
+	margin:10px 0;
+	overflow:hidden;
+}
+
+.header .menu a {
+	color:#FFF;
+	text-decoration:none;
+	float:right;
+	margin:10px;
+}
+
+.header .menu a:first-child {
+	float:left;
+}
+
+.shadow {
+	margin:20px 0;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow:hidden;
+}
+.post-title {
+	background-color:#2196F3;
+	color:#FFF;
+	padding:1%;
+	width:98%;
+	overflow:hidden;
+}
+.post-title-created,
+.post-title-updated {
+	width:48%;
+}
+
+.post-title-updated {
+	float:right;
+	text-align:right;
+}
+.post-title-created {
+	float:left;
+}
+
+.post-text {
+	width:98%;
+	padding:1%;
+}
+
+.btn {
+	color:#FFF;
+	border-radius:7px;
+	font-size:1.2em;
+	padding:10px;
+	border:0;
+	margin:10px 0;
+}
+
+.btn-submit {
+	background-color:#2196F3;
+}
+
+.btn-clear {
+	background-color:#ff3300;
+}
+
+/***************************************/
+.btn-submit2 {
+	background-color:#ff9933;
+}
 
