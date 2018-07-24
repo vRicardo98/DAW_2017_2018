@@ -1,0 +1,63 @@
+<html>
+
+	<head>
+		<title>Register | DAW (LAB 5)</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+	</head>
+	
+	<body class="container">
+		
+		<!-- INCLUDE inc/header.html -->
+		
+		<div class="main">
+			
+			<div class="shadow">
+				<!-- BEGIN FORM-MESSAGE -->
+				{MESSAGE}
+				<!-- END FORM-MESSAGE -->
+				
+				<!-- BEGIN FORM-REGISTER -->
+				<form action="./register_action.php" method="GET">
+					<h1 class="text-center">Register</h1>
+					<div class="form-group">
+						<label>Name</label>:
+						<input class="form-control" type="text" name="name" value="{NAME}" />
+					</div>
+					<div class="form-group">
+						<label>E-mail</label>:
+						<input class="form-control" type="text" name="email" value="{EMAIL}" />
+					</div>
+					<div class="form-group">
+						<label>Password</label>:
+						<input class="form-control" type="password" name="password" />
+					</div>
+					<div class="form-group">
+						<label>Password confirmation</label>:
+						<input class="form-control" type="password" name="repassword" />
+					</div>
+					
+					<div class="text-center">
+						<input class="btn btn-primary" type="submit" value="Go" />
+						<button type="reset" class="btn btn-primary">Clear</button>
+					</div>
+				</form>
+				<!-- END FORM-REGISTER -->
+			</div>
+			
+		</div>
+		
+		<!-- INCLUDE inc/footer.html -->
+		
+	</body>
+
+</html>
