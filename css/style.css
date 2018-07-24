@@ -41,6 +41,7 @@ form input[type="password"] {
 	background-color:red;
 	color:white;
 	padding:5px;
+	text-align:center;
 }
 
 .col2 {
