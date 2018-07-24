@@ -17,46 +17,29 @@
 	
 	<body class="container">
 		
-		<!-- INCLUDE inc/header.html -->
+		<div class="header">
+			<img class="logo" src="./img/logo.jpg" title="logo" />
+			<!-- BEGIN MENU -->
+			<div class="menu">
+				<a href="./index.php">home</a>
+				
+				<a href="./login.php">login</a>
+				<a href="./register.php">register</a>
+				
+			</div>
+			<!-- END MENU -->
+		</div>
 		
 		<div class="main">
 			
-			<div class="shadow">
-				<!-- BEGIN FORM-MESSAGE -->
-				{MESSAGE}
-				<!-- END FORM-MESSAGE -->
-				
-				<!-- BEGIN FORM-REGISTER -->
-				<form action="./register_action.php" method="GET">
-					<h1 class="text-center">Register</h1>
-					<div class="form-group">
-						<label>Name</label>:
-						<input class="form-control" type="text" name="name" value="{NAME}" />
-					</div>
-					<div class="form-group">
-						<label>E-mail</label>:
-						<input class="form-control" type="text" name="email" value="{EMAIL}" />
-					</div>
-					<div class="form-group">
-						<label>Password</label>:
-						<input class="form-control" type="password" name="password" />
-					</div>
-					<div class="form-group">
-						<label>Password confirmation</label>:
-						<input class="form-control" type="password" name="repassword" />
-					</div>
-					
-					<div class="text-center">
-						<input class="btn btn-primary" type="submit" value="Go" />
-						<button type="reset" class="btn btn-primary">Clear</button>
-					</div>
-				</form>
-				<!-- END FORM-REGISTER -->
-			</div>
+			<p class="text-center">Utilizador registado com sucesso!</p>
 			
 		</div>
 		
-		<!-- INCLUDE inc/footer.html -->
+		<footer class="row">
+			<div class="col-md-6">© Desenvolvimento de Aplicações Web 2018</div>
+			<div class="col-md-6 text-right">Designed by Aluno</div>
+		</footer>
 		
 	</body>
 

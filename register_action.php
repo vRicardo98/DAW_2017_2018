@@ -20,7 +20,7 @@ if($db) {
 	
 	$nrows  = mysql_num_rows($result);
 	
-	$error = -1;
+	$error = null;
 	
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		//$error = "o email não é valido";
@@ -33,10 +33,18 @@ if($db) {
 		$error = 3;
 	}
 	
-	if (error != -1)
+	if ($error)
 		header("Location:register.php?error=" . $error . "&name=" . $name . "&email=" . $email);
 	else {
-		header("Location: register_success.html");
+		//ADD USER ON DATASABE
+		// criar query numa string
+		$query  = "INSERT INTO users (name, email, created_at, updated_at, password_digest) VALUES ('" . $name . "', '" . $email . "', CURDATE(), CURDATE(), '" . substr(md5($password),0,32) . "')";
+		
+		// executar a query
+		if(!($result = @ mysql_query($query,$db))) {
+			showerror();
+		} else
+			header("Location: register_success.html");
 	}
 }
 ?>

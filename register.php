@@ -37,11 +37,11 @@ if($error){
 		case '3'	:	$error = "a repetição da password não coincide";
 						break;
 						
-		default		: 	$error = -1;
+		//default		: 	$error = -1;
 		
 	}
 	
-	$template->setVariable('MESSAGE', $error);
+	$template->setVariable('MESSAGE', '<div class="form-message">' . $error . '</div>');
 }
 $template->parseCurrentBlock();
 
