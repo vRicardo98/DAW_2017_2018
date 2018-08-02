@@ -7,14 +7,42 @@ require_once 'db.php';
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd); 
 
 if($db) {
-	
+
+	//SESSION LOGIN VALIDATION
+	if(isset($_COOKIE["rememberMe"])) {
+		$query  = "SELECT * FROM users WHERE remember_digest = '" . $_COOKIE["rememberMe"] . "'";
+				
+		// executar a query
+		if(!($result = @ mysql_query($query,$db))) {
+			showerror();
+		}
+		
+		$row = mysql_fetch_assoc($result);
+		$nrows  = mysql_num_rows($result);
+		
+		if($nrows > 0) {
+			$cookie_rememberMe = substr(md5(time()),0,32);
+			setcookie('rememberMe', $cookie_rememberMe, time() + (3600 * 24 * 30));
+			
+			$query  = "UPDATE users SET remember_digest = '" . $cookie_rememberMe . "' WHERE id = '" . $row["id"] . "'";
+				
+			// executar a query
+			if(!($result = @ mysql_query($query,$db))) {
+				showerror();
+			}
+		
+			$_SESSION["user_id"] = $row["id"];
+			$_SESSION["user_name"] = $row["name"];
+		}
+	}
+
 	// criar query numa string
 	$query  = "SELECT users.name AS username, microposts.* FROM microposts, users WHERE microposts.user_id = users.id";
 
 	// executar a query
 	if(!($result = @ mysql_query($query,$db)))
 		showerror();
-
+	
 	// Cria um novo objecto template
 	$template = new HTML_Template_IT('.');
 

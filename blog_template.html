@@ -2,7 +2,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="refresh" content="5;url=./index.php" />
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -13,13 +12,18 @@
 </head>	
 
 <body class="container">
-	<!-- INCLUDE inc/header.html -->
+	<!-- INCLUDE inc/header2.html -->
 	
-	<!-- BEGIN MAIN -->
-	<div class="main text-center shadow" style="background-color:yellow; padding:10px; margin-top:20px; font-size:1.2em;">	
-		{MESSAGE}
+	<!-- BEGIN FORM -->
+	<div class="main text-center shadow">	
+		<form action="{ACTION}" method="post">
+			<textarea style="width:45%;" name="blog-text" rows="5">{BLOG}</textarea>
+			<br>
+			<button class="btn btn-submit3" type="submit">GO</button>
+			<a class="btn btn-clear" href="./index.php">Cancel</a>
+		</form>
 	</div>	
-	<!-- END MAIN -->
+	<!-- END FORM -->
 
 	<!-- INCLUDE inc/footer.html -->
 </body>

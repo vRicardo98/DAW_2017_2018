@@ -45,6 +45,17 @@ if($db) {
 		header("Location:login.php?error=" . $error . "&email=" . $email);
 	else {
 		setcookie('user_id', $row["id"], time()+3600);
+		if($_POST["autologin"] == 1) {
+			$cookie_rememberMe = substr(md5(time()),0,32);
+			setcookie('rememberMe', $cookie_rememberMe, time() + (3600 * 24 * 30));
+			
+			$query  = "UPDATE users SET remember_digest = '" . $cookie_rememberMe . "' WHERE id = '" . $row["id"] . "'";
+				
+			// executar a query
+			if(!($result = @ mysql_query($query,$db))) {
+				showerror();
+			}
+		}
 		
 		$_SESSION["user_id"] = $row["id"];
 		$_SESSION["user_name"] = $row["name"];
