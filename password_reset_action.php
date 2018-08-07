@@ -46,7 +46,7 @@ if($db) {
 			$subject = "Password reset";
 			$txt = "Olá Sr.(a) " . $row['name'] . "\n
 					Para obter uma nova password clique no link\n"
-					. "http://" . $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] . "/new_password.php?token=" . $reset_digest . "\n
+					. "http://" . $_SERVER['HTTP_HOST'] . "/DAW/Lab8/new_password.php?token=" . $reset_digest . "\n
 					Este link tem a validade de uma hora.\n
 					Se NÃO pediu uma nova password IGNORE este email.\n\n\n
 					Cumprimentos,\n\n
@@ -59,7 +59,7 @@ if($db) {
 			//. "CC: somebodyelse@example.com";
 
 			if(!mail($to,$subject,$txt,$headers))
-				header("Location: message.php?code=2");
+				header("Location: message.php?code=0");
 		}
 		
 		header("Location: message.php?code=1");

@@ -24,24 +24,21 @@ $template->setVariable('MENU_3', $register_link);
 $template->parseCurrentBlock();
 
 $template->setCurrentBlock("FORM-NEW-PASSWORD");
-$template->setVariable('TOKEN', isset($_GET["TOKEN"]) ? $_GET["TOKEN"] : '');
+$template->setVariable('TOKEN', isset($_GET["token"]) ? $_GET["token"] : '');
 $template->parseCurrentBlock();
-/*
+
 $error = isset($_GET['error']) ? $_GET['error'] : '';
 
 $template->setCurrentBlock("FORM-MESSAGE");
 if($error){
 	switch($error) {
-		case '1'	:	$error = "o username/e-mail não é valido";
-						break;
-						
-		case '2'	:	$error = "a password não é valida";
+		case '1'	:	$error = "Password confirmation does not match!";
 						break;
 	}
 	
 	$template->setVariable('MESSAGE', '<div class="form-message">' . $error . '</div>');
 }
 $template->parseCurrentBlock();
-*/
+
 $template->show();
 ?>

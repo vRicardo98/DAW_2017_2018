@@ -33,10 +33,16 @@ $code = isset($_GET['code']) ? $_GET['code'] : '';
 $template->setCurrentBlock("MAIN");
 if($code){
 	switch($code) {
+		case '0'	:	$code = "Error: e-mail with your reset password link was not sent. Please, try again later.";
+						break;
+		
 		case '1'	:	$code = "Password reset activated! <br> Email sent to you :-)";
 						break;
 						
-		case '2'	:	$code = "Error: e-mail with your reset password link was not sent. Please, try again later.";
+		case '2'	:	$code = "Password reset successfully!";
+						break;
+						
+		case '3'	:	$code = "ERROR: WRONG TOKEN OR TOKEN EXPIRED, PASSWORD RESET FAILED!";
 						break;
 	}
 	

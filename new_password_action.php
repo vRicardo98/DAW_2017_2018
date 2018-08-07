@@ -5,13 +5,18 @@ require_once 'db.php';
 // ligação à base de dados
 $db = dbconnect($hostname,$db_name,$db_user,$db_passwd); 
 
-$email = $_POST['email'];
+$token = $_POST['token'];
 $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
+if($password != $repassword) {
+	header("Location:new_password.php?error=1");
+	die();
+}
+
 if($db) {	
 	// criar query numa string
-	$query  = "SELECT * FROM users = '" . $reset_digest . "', reset_sent_at = CURDATE() WHERE email = '" . $email . "'";
+	$query  = "SELECT * FROM users WHERE reset_digest = '" . $token . "'";
 	
 	// executar a query
 	if(!($result = @ mysql_query($query,$db)))
@@ -20,61 +25,24 @@ if($db) {
 	$row = mysql_fetch_assoc($result);
 	$nrows  = mysql_num_rows($result);
 	
-	if(isset($_GET["TOKEN"]) && ((time()*3600)-$row[reset_digest])<=1) {
-		if($password == $repassword) {
-			$query  = "UPDATE users SET password = '" . $password . "' WHERE email = '" . $row["email"] . "'";
-			
-			// executar a query
-			if(!($result = @ mysql_query($query,$db))) {
-				showerror();
-			}
-							
-			$template->setCurrentBlock("FORM-MESSAGE");
-			$template->setVariable('MESSAGE', '<div class="form-message">' . 'Password reset successfully!' . '</div>');
-			$template->parseCurrentBlock();
-			
-			header("Location:message.php?code=2");
+	$datetime1 = strtotime("now");
+	$datetime2 = strtotime($row['reset_sent_at']);
+
+	$secs = $datetime1 - $datetime2;// == <seconds between the two times>
+	$hours = $secs / 3600;
+	
+	if($token && $nrows > 0 && $hours <= 1) {
+		$query  = "UPDATE users SET password_digest = '" . substr(md5($password),0,32) . "' WHERE email = '" . $row["email"] . "'";
+		
+		// executar a query
+		if(!($result = @ mysql_query($query,$db))) {
+			showerror();
 		}
-		else {
-			$template->setCurrentBlock("FORM-MESSAGE");
-			$template->setVariable('MESSAGE', '<div class="form-message">' . 'Password confirmation does not match!' . '</div>');
-			$template->parseCurrentBlock();
-			
-			header("Location:message.php?code=1");
-		}
+		
+		header("Location:message.php?code=2");
 	}
 	else {
-		$template->setCurrentBlock("FORM-MESSAGE");
-		$template->setVariable('MESSAGE', '<div class="form-message">' . 'ERROR: WRONG TOKEN OR TOKEN EXPIRED, PASSWORD RESET FAILED!' . '</div>');
-		$template->parseCurrentBlock();
-		
 		header("Location:message.php?code=3");
 	}
-	
-	/*$query  = "SELECT * FROM users = '" . $reset_digest . "', reset_sent_at = CURDATE() WHERE id = '" . users.id . "' AND email = '" . $email . "'";
-				
-	// executar a query
-	if(!($result = @ mysql_query($query,$db))) {
-		showerror();
-	} 
-	
-	$row = mysql_fetch_assoc($result);
-	//COMPLETE NEXT CODE...
-	if(isset($_GET["TOKEN"]) && ((time()*3600)-$row[reset_digest])<=1) {
-		
-	}*/
-	
-	/*
-	// criar query numa string
-	$query  = "SELECT * FROM users WHERE email = '" . $email . "'";
-	
-	// executar a query
-	if(!($result = @ mysql_query($query,$db)))
-		showerror();
-	
-	$row = mysql_fetch_assoc($result);
-	$nrows  = mysql_num_rows($result);
-	*/
-	
 }
 ?>
